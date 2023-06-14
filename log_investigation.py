@@ -54,7 +54,7 @@ def generate_port_traffic_report(port_number):
     Args:
         port_number (str or int): Destination port number
     """
-    # TODO: Complete function body per step 8
+    # Complete function body per step 8
     # Get data from records that contain the specified destination port
     data = log_analysis_lib.filter_log_by_regex(log_path, r'^(.+ \d+) (.{8}).*SRC=(.*?) DST=(.*?) .*SPT=(.*?) DPT=(.*?) ')[1]
     # Generate the CSV report
@@ -64,13 +64,18 @@ def generate_port_traffic_report(port_number):
     df.to_csv(csv_filename, index=False, header=headings)
     return
 
-def generate_invalid_user_report():
+def generate_invalid_user_report(invalid_user):
     """Produces a CSV report of all network traffic in a log file that show
     an attempt to login as an invalid user.
     """
     # TODO: Complete function body per step 9
     # Get data from records that show attempted invalid user login
+    data = log_analysis_lib.filter_log_by_regex(log_path, r'^(.+ \d+) (.{8}).*SRC=(.*?) DST=(.*?) .*SPT=(.*?) DPT=(.*?) ')[1]
     # Generate the CSV report
+    df = pd.DataFrame(data)
+    csv_filename = f"invalid_user_{invalid_user}_invalid_users.csv"
+    heading = ('Date', 'Time', 'Username', 'IP address')
+    df.to_csv(csv_filename, index=False, header=heading)
     return
 
 def generate_source_ip_log(ip_address):
@@ -82,6 +87,8 @@ def generate_source_ip_log(ip_address):
     """
     # TODO: Complete function body per step 10
     # Get all records that have the specified sourec IP address
+    regex = f"SRC={ip_address}"
+    data = 
     # Save all records to a plain text .log file
     return
 

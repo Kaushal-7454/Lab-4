@@ -32,7 +32,7 @@ def get_file_path_from_cmd_line(param_num=1):
     Returns:
         str: File path
     """
-    # TODO: Implement the function body per Step 3
+    # Implement the function body per Step 3
     #check weather the command line parameter was provided
     num_params = len(sys.argv) - 1
     if num_params < param_num:
